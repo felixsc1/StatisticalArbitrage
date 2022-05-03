@@ -10,8 +10,10 @@ def get_tradeable_symbols():
     if "ret_msg" in symbols.keys():
         if symbols["ret_msg"] == "OK":
             symbols = symbols["result"]
-    # filter symbols according to our strategy
-    for symbol in symbols:
-        if symbol["quote_currency"] == "USDT" and float(symbol["maker_fee"]) < 0 and symbol["status"] == "Trading":
-            sym_list.append(symbol)
-    print(sym_list)
+
+            # if OK, filter symbols according to our strategy
+            # Problem as of April 2022, only few symbols have negative maker fee, adjusted it therefore...
+            for symbol in symbols:
+                if symbol["quote_currency"] == "USDT" and float(symbol["maker_fee"]) < 0.1 and symbol["status"] == "Trading":
+                    sym_list.append(symbol)
+            return sym_list
