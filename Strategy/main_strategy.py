@@ -27,10 +27,13 @@ if __name__ == "__main__":
     # print("Calculation done.")
 
     # STEP 4 - Plot trends and save for backtesting
-    # enter two pairs from the csv of step 3
+    # Inspect the the csv of step 3 and enter two pairs of interest:
     symbol_1 = "MATICUSDT"
     symbol_2 = "STXUSDT"
     with open("1_price_list.json") as json_file:
         price_data = json.load(json_file)
         if len(price_data) > 0:
             plot_trends(symbol_1, symbol_2, price_data)
+
+
+"""EXECUTION CODE"""
