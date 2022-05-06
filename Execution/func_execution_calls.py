@@ -63,7 +63,7 @@ def initialize_order_execution(ticker, direction, capital):
         orderbook["result"], direction, capital)
     order = place_order(ticker, mid_price, quantity, direction, stop_loss)
     # for an example order response: https://bybit-exchange.github.io/docs/inverse/#t-placeactive
-    print(order)
+    # print(order)
     if "result" in order.keys():
         if "order_id" in order["result"]:
             return order["result"]["order_id"]

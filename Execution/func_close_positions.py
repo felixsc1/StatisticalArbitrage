@@ -85,5 +85,5 @@ def close_all_positions(kill_switch):
     return kill_switch
 
 
-ks = close_all_positions(1)
-print(ks)
+# ks = close_all_positions(1)
+# print(ks)

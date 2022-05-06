@@ -1,3 +1,6 @@
+# !!!!!!
+# Make sure before execution, all changes here are also made in ./Execution/func_stats.py
+
 from config_strategy_api import z_score_window
 import math
 from statsmodels.tsa.stattools import coint
