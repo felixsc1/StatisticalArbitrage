@@ -78,5 +78,5 @@ def get_trade_details(orderbook, direction="Long", capital=0):
             quantity = round(capital / mid_price, quantity_rounding)
 
     # Output results
-    print(mid_price, stop_loss, quantity)
+    # print(mid_price, stop_loss, quantity)
     return (mid_price, stop_loss, quantity)

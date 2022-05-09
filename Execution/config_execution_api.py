@@ -5,11 +5,19 @@ bybit module: https://github.com/bybit-exchange/pybit
 
 # API Imports
 from pybit.usdt_perpetual import HTTP
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # CONFIG VARIABLES
 mode = "test"
+# For development try "BTCUSDT" and "ETHUSDT" most transactions happening there
+# --------------------
 ticker_1 = "MATICUSDT"
 ticker_2 = "STXUSDT"
+
+
 signal_positive_ticker = ticker_2
 # -> when z-score is positive, go long on ticker_2 and vice versa.
 signal_negative_ticker = ticker_1
@@ -21,12 +29,13 @@ rounding_ticker_1 = 4
 rounding_ticker_2 = 3
 quantity_rounding_ticker_1 = 0
 quantity_rounding_ticker_2 = 1
+# --------------------
 
 # ensure positions (except for close) are placed on limit basis
 limit_order_basis = True
 
 # tradeable capital split between two pairs, 2000 meaning 1000 for each pair.
-tradeable_capital_usdt = 2000
+tradeable_capital_usdt = 500
 # fail safe in case of drastic events.
 stop_loss_fail_safe = 0.15
 # z-score threshold (must be above zero)
@@ -43,8 +52,8 @@ api_key_mainnet = ""
 api_secret_mainnet = ""
 
 # TEST API
-api_key_testnet = "O4sXpOwYcs10DqsD3x"
-api_secret_testnet = "eg46qxjm4zjIe70cPoQDoXqs91VdQAhMluFX"
+api_key_testnet = os.getenv("API_KEY_TESTNET")
+api_secret_testnet = os.getenv("API_SECRET_TESTNET")
 
 
 # SELECTED API
