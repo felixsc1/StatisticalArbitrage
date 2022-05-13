@@ -6,10 +6,15 @@ bybit module: https://github.com/bybit-exchange/pybit
 # API Imports
 from pybit.usdt_perpetual import HTTP
 import websocket
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # CONFIG
 mode = "test"
-timeframe = 60  # interval in minutes
+timeframe = 30  # interval in minutes
+# for availabe intervals, see: https://bybit-exchange.github.io/docs/linear/?python--pybit#tp-sl-mode-tp_sl_mode
 kline_limit = 200  # number of historical time points (200 is max size)
 z_score_window = 21  # window for moving average
 
@@ -18,8 +23,8 @@ api_key_mainnet = ""
 api_secret_mainnet = ""
 
 # TEST API
-api_key_testnet = "O4sXpOwYcs10DqsD3x"
-api_secret_testnet = "eg46qxjm4zjIe70cPoQDoXqs91VdQAhMluFX"
+api_key_testnet = os.getenv("API_KEY_TESTNET")
+api_secret_testnet = os.getenv("API_SECRET_TESTNET")
 
 # SELECTED API
 api_key = api_key_mainnet if mode == "production" else api_key_testnet

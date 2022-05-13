@@ -30,10 +30,17 @@ if __name__ == "__main__":
 
     # Commence bot
     print("Seeking trades...")
+    i = 0
     while True:
 
         # pause to limit API calls
         time.sleep(3)
+
+        # Print zscore occasionally
+        zscore, _ = get_latest_zscore()
+        i += 1
+        if i % 10 == 0:
+            print(f'current zscore = {zscore}')
 
         # Check if any open trades already exist
         is_p_ticker_open = open_position_confirmation(signal_positive_ticker)

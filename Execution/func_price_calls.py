@@ -51,10 +51,17 @@ def get_timestamps():
     if timeframe == "D":
         time_start_date = now - datetime.timedelta(days=kline_limit)
         time_next_date = now + datetime.timedelta(minutes=1)
+
+    else:
+        # for arbitrary times in minutes
+        time_start_date = now - \
+            datetime.timedelta(minutes=(timeframe * kline_limit))
+        time_next_date = now + datetime.timedelta(minutes=1)
+
     time_start_seconds = int(time_start_date.timestamp())
     time_next_seconds = int(time_next_date.timestamp())
     time_now_seconds = int(now.timestamp())
-    # print(time_start_seconds, time_now_seconds, time_next_seconds)
+    # print(f"start timestamp: {time_start_seconds}, now:  {time_now_seconds}")
     return (time_start_seconds, time_now_seconds, time_next_seconds)
 
 

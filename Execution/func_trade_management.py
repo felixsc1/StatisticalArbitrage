@@ -1,6 +1,4 @@
 # High level body of the bot.
-
-from os import kill
 from config_execution_api import (
     signal_positive_ticker, signal_negative_ticker, signal_trigger_threshold,
     tradeable_capital_usdt, limit_order_basis, session_private)
@@ -21,7 +19,7 @@ def manage_new_trades(kill_switch):
 
     # Get and save the latest z-score
     zscore, signal_sign_positive = get_latest_zscore()
-    print("zscore:", zscore)
+    # print("zscore:", zscore)
 
     # Switch to hot if signal threshold met
     # Optional: Add coint-flag check too for extra vigilance.
@@ -107,7 +105,7 @@ def manage_new_trades(kill_switch):
             else:
                 signal_side = "negative"
 
-            # Handle kill switch
+            # Handle kill switch for market orders
             if not limit_order_basis and counts_long and counts_short:
                 kill_switch = 1  # will stop placing limit orders
 

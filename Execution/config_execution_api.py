@@ -14,8 +14,8 @@ load_dotenv()
 mode = "test"
 # For development try "BTCUSDT" and "ETHUSDT" most transactions happening there
 # --------------------
-ticker_1 = "MATICUSDT"
-ticker_2 = "STXUSDT"
+ticker_1 = "KDAUSDT"
+ticker_2 = "GMTUSDT"
 
 
 signal_positive_ticker = ticker_2
@@ -25,24 +25,24 @@ signal_negative_ticker = ticker_1
 # to find out rounding/decimals of each ticker, check the chart on testnet.bybit.com
 # e.g. MATICUSDT has 4 decimals, STXUSDT has 3,  quantity is an integer for matic, one decimal for stx.
 # Todo: make bot figure these out automatically.
-rounding_ticker_1 = 4
-rounding_ticker_2 = 3
-quantity_rounding_ticker_1 = 0
-quantity_rounding_ticker_2 = 1
+rounding_ticker_1 = 3
+rounding_ticker_2 = 4
+quantity_rounding_ticker_1 = 1
+quantity_rounding_ticker_2 = 0
 # --------------------
 
 # ensure positions (except for close) are placed on limit basis
 limit_order_basis = True
 
 # tradeable capital split between two pairs, 2000 meaning 1000 for each pair.
-tradeable_capital_usdt = 500
+tradeable_capital_usdt = 1000
 # fail safe in case of drastic events.
 stop_loss_fail_safe = 0.15
 # z-score threshold (must be above zero)
 signal_trigger_threshold = 1.1
 
-# make sure the following settings match the strategy!
-timeframe = 60  # hourly
+# make sure the following settings match those under strategy!
+timeframe = 30  # minutes
 kline_limit = 200
 z_score_window = 21
 

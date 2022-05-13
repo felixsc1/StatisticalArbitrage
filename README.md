@@ -16,7 +16,7 @@ Outputs and statistics are stored as .csv files for further backtesting.
 
 ## ./Execution
 
-Within an infinite loop:
+Within an infinite loop in the file ./Execution/main_execution.py:
 - Monitor z-score signal
 - Place long and short orders if z-score threshold is reached.
   - Order size is calculated depending on the liquidity of the assets. 

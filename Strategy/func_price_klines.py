@@ -17,8 +17,12 @@ if timeframe == 60:
     time_start_date = datetime.datetime.now() - datetime.timedelta(hours=kline_limit)
 if timeframe == "D":
     time_start_date = datetime.datetime.now() - datetime.timedelta(days=kline_limit)
+else:
+    # for arbitrary times in minutes
+    time_start_date = datetime.datetime.now(
+    ) - datetime.timedelta(minutes=(timeframe * kline_limit))
 time_start_seconds = int(time_start_date.timestamp())
-# print(time_start_seconds)
+# print("start timestamp: ", time_start_seconds)
 
 
 # Get historical prices (klines = candles)

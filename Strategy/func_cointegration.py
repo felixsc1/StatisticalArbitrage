@@ -82,7 +82,6 @@ def get_cointegrated_pairs(prices):
                 # Check for cointegration and add cointegrated pair
                 coint_flag, p_value, t_value, c_value, hedge_ratio, zero_crossings = calculate_cointegration(
                     series_1, series_2)
-                # BUG: something wrong with zero crossings, they are all identical
                 # print(p_value, hedge_ratio, zero_crossings)
                 if coint_flag == 1:
                     included_list.append(unique)
@@ -98,6 +97,11 @@ def get_cointegrated_pairs(prices):
 
     # Output Results
     df_coint = pd.DataFrame(coint_pair_list)
-    df_coint = df_coint.sort_values("zero_crossings", ascending=False)
+    try:
+        df_coint = df_coint.sort_values("zero_crossings", ascending=False)
+    except KeyError:
+        # then there won't be anything in coint_pair_list
+        print("No cointegrated pairs found!")
+
     df_coint.to_csv("2_cointegrated_pairs.csv")
     return df_coint
